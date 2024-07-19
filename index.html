@@ -9,79 +9,18 @@
 </head>
 <body>
     <div>
-        <div class="title" id="title">test</div>
-        <div class="subtitle" id="subtitle">SUBTITLE</div>
+        
     </div>
     <div class="container text-center">
         <div class="image-container">
+            <div class="title" id="title">WTF</div>
+        <div class="subtitle" id="subtitle">ESTE TIPO HIZO UNA PAGINA ENTERA CON TODOS LOS MODS DEL BALDURS, VOY A COMPRARSELO. SI ESO HARE Y LE DARE LOS DATOS DE MI TARJETA</div>
+            <div class="tenor-gif-embed" data-postid="27526370" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
+                <a href="https://tenor.com/view/shock-shocker-shocked-black-guy-gif-27526370">Shock Shocker GIF</a>from <a href="https://tenor.com/search/shock-gifs">Shock GIFs</a>
+            </div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
             
-            <img id="image" src="imagenes/tav.png" alt="Imagen 1" class="img-fluid">
-            
-            <div class="button-container d-flex justify-content-between">
-                <button id="prev-button" class="btn btn-primary">Anterior</button>
-                <button id="next-button" class="btn btn-primary">Siguiente</button>
-            </div>
-            <a id="download-link" class="download-link btn btn-danger mt-3" href="download" download target="_blank">Descargar</a>
+            <button type="button" class="btn btn-outline-primary"><a href="index2.html">ingresar datos de la tarjeta</a></button>
         </div>
     </div>
-    <script>
-        //Im
-        const images = ['imagenes/tav.png', 'imagenes/impui.png']; 
-        const downloads = ['https://www.nexusmods.com/baldursgate3/mods/213?tab=files&file_id=63397',
-        'imagenes/descarga-impui.zip']; 
-        const titles = ['Tav', 'Título de la imagen 2']; 
-        const subtitles = ['JAJA ESTE AÑADE PELO QUE GEI XD', 'Subtítulo o descripción corta de la imagen 2.'];
-        const downloaded = [false, false];
-
-        let currentIndex = 0;
-        const imageElement = document.getElementById('image');
-        const downloadLinkElement = document.getElementById('download-link');
-        const titleElement = document.getElementById('title');
-        const subtitleElement = document.getElementById('subtitle');
-        const prevButton = document.getElementById('prev-button');
-        const nextButton = document.getElementById('next-button');
-        const imageContainer = document.querySelector('.image-container');
-
-        function updateContent() {
-            imageElement.classList.add('fade-out');
-            setTimeout(() => {
-                imageElement.src = images[currentIndex];
-                downloadLinkElement.href = downloads[currentIndex];
-                titleElement.textContent = titles[currentIndex];
-                subtitleElement.textContent = subtitles[currentIndex];
-                imageElement.classList.remove('fade-out');
-
-                
-                if (downloaded[currentIndex]) {
-                    downloadLinkElement.classList.remove('btn-danger');
-                    downloadLinkElement.classList.add('btn-success');
-                } else {
-                    downloadLinkElement.classList.remove('btn-success');
-                    downloadLinkElement.classList.add('btn-danger');
-                }
-            }, 500); 
-        }
-
-        function nextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateContent();
-        }
-
-        function prevImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateContent();
-        }
-
-        nextButton.addEventListener('click', nextImage);
-        prevButton.addEventListener('click', prevImage);
-
-        downloadLinkElement.addEventListener('click', function() {
-            downloaded[currentIndex] = true; // Marca la imagen actual como descargada
-            downloadLinkElement.classList.remove('btn-danger');
-            downloadLinkElement.classList.add('btn-success');
-        });
-
-        updateContent();
-    </script>
 </body>
 </html>

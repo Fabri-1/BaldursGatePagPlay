@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YO SOY LAS PUERTAS DEL BALDURS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="image-container">
+            <div class="title" id="title">test</div>
+            <div class="subtitle" id="subtitle">SUBTITLE</div>
+            <img id="image" src="imagenes/tav.png" alt="Imagen 1" class="img-fluid">
+            
+            <div class="button-container d-flex justify-content-between">
+                <button id="prev-button" class="btn btn-primary">Anterior</button>
+                <button id="next-button" class="btn btn-primary">Siguiente</button>
+            </div>
+            <a id="download-link" class="download-link btn btn-danger mt-3" href="imagenes/descarga-tav.zip" download target="_blank">Descargar</a>
+        </div>
+    </div>
+    <script>
+        //Im
+        const images = ['imagenes/modfixer.png', 'imagenes/tav.png']; 
+        const downloads = ['https://www.nexusmods.com/baldursgate3/mods/213?tab=files&file_id=63397',
+        'imagenes/descarga-impui.zip']; 
+        const titles = ['Mod fixer', 'Título de la imagen 2']; 
+        const subtitles = ['bvueno este es el primero sin este los mods no funcionan, eso po, que almorzaste hoy?', 'Subtítulo o descripción corta de la imagen 2.'];
+        const downloaded = [false, false];
+
+        let currentIndex = 0;
+        const imageElement = document.getElementById('image');
+        const downloadLinkElement = document.getElementById('download-link');
+        const titleElement = document.getElementById('title');
+        const subtitleElement = document.getElementById('subtitle');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+        const imageContainer = document.querySelector('.image-container');
+
+        function updateContent() {
+            imageElement.classList.add('fade-out');
+            setTimeout(() => {
+                imageElement.src = images[currentIndex];
+                downloadLinkElement.href = downloads[currentIndex];
+                titleElement.textContent = titles[currentIndex];
+                subtitleElement.textContent = subtitles[currentIndex];
+                imageElement.classList.remove('fade-out');
+
+                // Actualiza el color del botón de descarga según el estado de la imagen actual
+                if (downloaded[currentIndex]) {
+                    downloadLinkElement.classList.remove('btn-danger');
+                    downloadLinkElement.classList.add('btn-success');
+                } else {
+                    downloadLinkElement.classList.remove('btn-success');
+                    downloadLinkElement.classList.add('btn-danger');
+                }
+            }, 500); 
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateContent();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateContent();
+        }
+
+        nextButton.addEventListener('click', nextImage);
+        prevButton.addEventListener('click', prevImage);
+
+        downloadLinkElement.addEventListener('click', function() {
+            downloaded[currentIndex] = true; // Marca la imagen actual como descargada
+            downloadLinkElement.classList.remove('btn-danger');
+            downloadLinkElement.classList.add('btn-success');
+        });
+
+        updateContent();
+    </script>
+</body>
+</html>

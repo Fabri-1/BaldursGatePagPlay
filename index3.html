@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YO SOY LAS PUERTAS DEL BALDURS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="video-container">
+            <div class="title" id="title">test</div>
+            <div class="subtitle" id="subtitle">SUBTITLE</div>
+            <video id="video" class="video-fluid" controls>
+                <source src="imagenes/1.mp4" type="video/mp4">
+                Si vei esto tu navegador es pesimo, usa otro. Me cagaste todo ctmre.
+            </video>
+            
+            <div class="button-container d-flex justify-content-between">
+                <button id="prev-button" class="btn btn-primary">Anterior</button>
+                <button id="next-button" class="btn btn-primary">Siguiente</button>
+            </div>
+            <a id="download-link" class="download-link btn btn-danger mt-3" href="imagenes/descarga-tav.zip">YA ENTENDI WATON QLO AHORA DAME LOS MODS</a>
+        </div>
+    </div>
+    <script>
+        const videos = ['imagenes/1.mp4', 'imagenes/2.mp4']; 
+        const downloads = ['#', 'index4.html']; 
+        const titles = ['PESAO QLO YA MIRA', 'JAJA NO HIZE UNA PAGINA PA ENSEÑARTE A INSTALAR EL MOD MANAGER']; 
+        const subtitles = ['CUANDO DESCARGES EL MOD TE VA A DAR UN .RAR/.ZIP, EXTRAES EL ".PAK" QUE ESTA DENTRO EN EL ESCRITORIO SI NO NO TE DEJA HACERLO, O LO EXTRAES DONDE QUIERAS MENOS EN LA PAPELERA DE RECICLAJE PO WEON NO WEI', 
+        'o quizas ya te habre dicho como, pero extraes el ".PAK" al mod manager, asegurate de ponerlo en la izquierda siempre izquierda jaja chiste politico lo entendiste??????????'];
+        const downloaded = [false, false];
+
+        let currentIndex = 0;
+        const videoElement = document.getElementById('video');
+        const downloadLinkElement = document.getElementById('download-link');
+        const titleElement = document.getElementById('title');
+        const subtitleElement = document.getElementById('subtitle');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        function updateContent() {
+            videoElement.classList.add('fade-out');
+            setTimeout(() => {
+                videoElement.src = videos[currentIndex];
+                downloadLinkElement.href = downloads[currentIndex];
+                titleElement.textContent = titles[currentIndex];
+                subtitleElement.textContent = subtitles[currentIndex];
+                videoElement.classList.remove('fade-out');
+
+                // Actualiza el color del botón de descarga según el estado del video actual
+                if (downloaded[currentIndex]) {
+                    downloadLinkElement.classList.remove('btn-danger');
+                    downloadLinkElement.classList.add('btn-success');
+                } else {
+                    downloadLinkElement.classList.remove('btn-success');
+                    downloadLinkElement.classList.add('btn-danger');
+                }
+            }, 500); 
+        }
+
+        function nextVideo() {
+            currentIndex = (currentIndex + 1) % videos.length;
+            updateContent();
+        }
+
+        function prevVideo() {
+            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+            updateContent();
+        }
+
+        nextButton.addEventListener('click', nextVideo);
+        prevButton.addEventListener('click', prevVideo);
+
+        downloadLinkElement.addEventListener('click', function() {
+            downloaded[currentIndex] = true; // Marca el video actual como descargado
+            downloadLinkElement.classList.remove('btn-danger');
+            downloadLinkElement.classList.add('btn-success');
+        });
+
+        updateContent();
+    </script>
+</body>
+</html>
