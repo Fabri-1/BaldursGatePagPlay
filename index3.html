@@ -21,15 +21,15 @@
                 <button id="prev-button" class="btn btn-primary">Anterior</button>
                 <button id="next-button" class="btn btn-primary">Siguiente</button>
             </div>
-            <a id="download-link" class="download-link btn btn-danger mt-3" href="imagenes/descarga-tav.zip">YA ENTENDI WATON QLO AHORA DAME LOS MODS</a>
+            <a id="download-link" href="#" class="btn btn-success">YA ENTENDI AHORA DAME LOS LINK WATON CULIAO MALDITO, JAJA EN EL SEGUNDO VIDEO ESTE BOTON NO SE CENTRA Q PAJA ARREGLARLO</a>
         </div>
     </div>
     <script>
-        const videos = ['imagenes/1.mp4', 'imagenes/2.mp4']; 
+        const videos = ['#', 'imagenes/2.mp4']; 
         const downloads = ['#', 'index4.html']; 
         const titles = ['PESAO QLO YA MIRA', 'JAJA NO HIZE UNA PAGINA PA ENSEÑARTE A INSTALAR EL MOD MANAGER']; 
-        const subtitles = ['CUANDO DESCARGES EL MOD TE VA A DAR UN .RAR/.ZIP, EXTRAES EL ".PAK" QUE ESTA DENTRO EN EL ESCRITORIO SI NO NO TE DEJA HACERLO, O LO EXTRAES DONDE QUIERAS MENOS EN LA PAPELERA DE RECICLAJE PO WEON NO WEI', 
-        'o quizas ya te habre dicho como, pero extraes el ".PAK" al mod manager, asegurate de ponerlo en la izquierda siempre izquierda jaja chiste politico lo entendiste??????????'];
+        const subtitles = ['pta lwea habia grabado una wea aqui pero me di cuenta que con mover el .zip al mod manager sirve, que paja volver a grtabar un video de 5 segundos', 
+        'imagina que el .pak es un .zip/.rar, lo mueves al mod manager, asegurate de ponerlo en la izquierda siempre izquierda jaja chiste politico lo entendiste??????????'];
         const downloaded = [false, false];
 
         let currentIndex = 0;
@@ -74,7 +74,7 @@
         prevButton.addEventListener('click', prevVideo);
 
         downloadLinkElement.addEventListener('click', function() {
-            downloaded[currentIndex] = true; // Marca el video actual como descargado
+            downloaded[currentIndex] = true; 
             downloadLinkElement.classList.remove('btn-danger');
             downloadLinkElement.classList.add('btn-success');
         });

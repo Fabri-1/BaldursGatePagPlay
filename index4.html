@@ -10,26 +10,57 @@
 <body>
     <div class="container text-center">
         <div class="image-container">
+            <header>
             <div class="title" id="title">test</div>
+        </header>
             <div class="subtitle" id="subtitle">SUBTITLE</div>
             <img id="image" src="imagenes/tav.png" alt="Imagen 1" class="img-fluid">
-            
-            <div class="button-container d-flex justify-content-between">
-                <button id="prev-button" class="btn btn-primary">Anterior</button>
-                <button id="next-button" class="btn btn-primary">Siguiente</button>
-            </div>
             <a id="download-link" class="download-link btn btn-danger mt-3" href="imagenes/descarga-tav.zip" download target="_blank">Descargar</a>
         </div>
     </div>
+    <div class="buttonizq">
+        <button class="btn btn-primary btn-lg buttonizq" id="prev-button">Anterior</button>
+    </div>
+    <div class="buttonder">
+        <button class="btn btn-primary btn-lg buttonder" id="next-button">Siguiente</button>
+    </div>
     <script>
-        //Im
-        const images = ['imagenes/modfixer.png', 'imagenes/tav.png']; 
+        //7 Mods + 1 Troll + 1 Mod + 1 Troll
+        const images = ['imagenes/modfixer.png', 'imagenes/impui.png', 'imagenes/native.png', 'imagenes/bti.png','imagenes/bctp.png', 'imagenes/achievements.png', 'imagenes/tav.png', 'imagenes/kok.png', 'imagenes/iconhair.png'
+            , 'imagenes/sara.png', 'imagenes/camp.png'
+        ]; 
+        //Links
         const downloads = ['https://www.nexusmods.com/baldursgate3/mods/213?tab=files&file_id=63397',
-        'imagenes/descarga-impui.zip']; 
-        const titles = ['Mod fixer', 'Título de la imagen 2']; 
-        const subtitles = ['bvueno este es el primero sin este los mods no funcionan, eso po, que almorzaste hoy?', 'Subtítulo o descripción corta de la imagen 2.'];
-        const downloaded = [false, false];
+        'https://www.nexusmods.com/baldursgate3/mods/366?tab=files&file_id=50549',
+        'https://www.nexusmods.com/baldursgate3/mods/944?tab=files&file_id=8910',
+        'https://www.nexusmods.com/baldursgate3/mods/3269?tab=files&file_id=45349',
+        'https://www.nexusmods.com/baldursgate3/mods/4137?tab=files&file_id=44897',
+        'https://www.nexusmods.com/baldursgate3/mods/668?tab=files&file_id=32355',
+        'https://www.nexusmods.com/baldursgate3/mods/213?tab=files&file_id=63397',
+        'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        'https://www.nexusmods.com/baldursgate3/mods/3346?tab=files&file_id=63669',
+        '#',
+        'https://www.nexusmods.com/baldursgate3/mods/1879?tab=files&file_id=16041']; 
+        //Names
+        const titles = ['Mod fixer', 'ImprovedUI', 'Native Mod Loader', 'Better Target Info', 'Better Cursor Text Panel', 'Achievements Enabler', 'Tav Hair', 'Kokomi Mod', 'TavIcon', 'Kujou Sara'
+            , 'Camp Event Notification'
+        ]; //Mods order
+        //Subtitle
+        const subtitles = ['bvueno este es el primero sin este los mods no funcionan, eso po, que almorzaste hoy?', 
+        'esto es pa darle mas personalizacion a la interfaz, tambien es esencial para que los modders puedan modificarla o añadirle weas que es lo que vamos a hacer XDDDDDDDDDDDDDDDDDDDD branje qlo sacate casa',
+        'este es para que un mod funcione tu instalalo nomas OJO ESTE ES INSTALA EN EL DIRECTORIO DEL JUEGO Y TE VA A PEDIR REEMPLAZAR DALE QUE SI .................. si po',
+        'listo esas eran todas las dependencias ahora los mods que sirven para algo, este te muestra las debilidades de los personajes abajo de la barra de vida, asi no tienes que hacer click derecho info jajka wea util',
+        'con este puedes ver cuanto daño vas a hacerle al enemigo, te sale el minimo que le vas a hacer y el maximo, en el vanilla solo te muestra el porcentaje de darle',
+        'podi desbloquear logros, con mods se te desactivan asi que este te lo habilita que mas queri saber ctmre lee el titulo pedazo de jil OJO ESTE SE INSTALA EN EL DIRECTORIO DEL JUEGO',
+        'pesa un poco pero es para tener pelos, jaja qe gei, no..............no po que wea',
+        'Kokomi best waifu en baldurs gate 3, es perfecto, este se instala distinto si',
+        'vueno este es para ver los pelos, si no se ven como interrogante wea loka aunque creo que algunos igual se ven con interrogante pero bueno q wea yo decido que se instala y que no',
+        'la polola de kokomi po hay q meterla a las 2, este no se instala distinto',
+        'ya te dije pa q es pero te sale una exclamacion en el personaje cuando haya un evento en el campamento al volver, simple y sencillo como el canal de esskayuwu twitch.tv/esskayuwu'];
+        //Bool
+        const downloaded = [false, false, false, false, false, false, false, false, false, false];
 
+        //Not my part from here
         let currentIndex = 0;
         const imageElement = document.getElementById('image');
         const downloadLinkElement = document.getElementById('download-link');
@@ -48,7 +79,6 @@
                 subtitleElement.textContent = subtitles[currentIndex];
                 imageElement.classList.remove('fade-out');
 
-                // Actualiza el color del botón de descarga según el estado de la imagen actual
                 if (downloaded[currentIndex]) {
                     downloadLinkElement.classList.remove('btn-danger');
                     downloadLinkElement.classList.add('btn-success');
@@ -73,7 +103,7 @@
         prevButton.addEventListener('click', prevImage);
 
         downloadLinkElement.addEventListener('click', function() {
-            downloaded[currentIndex] = true; // Marca la imagen actual como descargada
+            downloaded[currentIndex] = true; 
             downloadLinkElement.classList.remove('btn-danger');
             downloadLinkElement.classList.add('btn-success');
         });
